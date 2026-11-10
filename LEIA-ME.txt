@@ -1,0 +1,19 @@
+MIKIKI · site adaptável (celular + computador)
+
+Uma página só: index.html escolhe o layout pela largura da tela.
+  - até 899 px  -> biolink do celular (mobile.css + mobile.js)
+  - 900 px ou + -> site desktop      (desktop.css + desktop.js)
+  - ?v=m ou ?v=d no endereço força um dos dois (para testar)
+
+Arquivos (todos na mesma pasta, sem subpastas):
+  index.html   página e os dois layouts
+  mk.js        preços, diárias e regras de reserva (os dois layouts usam este)
+  *.css *.js   estilo e lógica de cada layout
+  *.jpg *.png  fotos e logos
+  poppins-*.woff2  fonte
+
+Preços ao vivo: mk.js lê https://mikiki-hotel.github.io/prices.json.
+Se o prices.json não carregar, valem os preços que já estão dentro do mk.js.
+
+GitHub Pages: suba TODOS estes arquivos na raiz do repositório e ative o Pages.
+Não precisa de build. A página não tem noindex (o Google pode indexar).
