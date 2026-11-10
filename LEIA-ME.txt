@@ -3,6 +3,7 @@ MIKIKI · site adaptável (celular + computador)
 Uma página só: index.html escolhe o layout pela largura da tela.
   - até 899 px  -> biolink do celular (mobile.css + mobile.js)
   - 900 px ou + -> site desktop      (desktop.css + desktop.js)
+  - celular deitado (touch, paisagem, 640 px ou +) -> site desktop
   - ?v=m ou ?v=d no endereço força um dos dois (para testar)
 
 Arquivos (todos na mesma pasta, sem subpastas):

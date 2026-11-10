@@ -525,3 +525,14 @@ button.btn{width:100%}
 body.sheetopen{overflow:hidden}
 body.sheetopen .float,body.sheetopen .mascot{visibility:hidden}
 @media (prefers-reduced-motion:reduce){.shpn,.shbg,.toast{transition:none}.float .btn.bump{animation:none}}
+
+/*GEO-FAQ*/
+.faq{margin-top:22px;border-top:1px solid var(--line,rgba(35,42,99,.14))}
+.faq details{border-bottom:1px solid var(--line,rgba(35,42,99,.14))}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0;font-size:15px;line-height:1.4;font-weight:400;color:var(--fg)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ic{font-size:17px;color:var(--ic);transition:transform .3s}
+.faq details[open] summary .ic{transform:rotate(90deg)}
+.faq details p{margin:0;padding:0 0 18px;font-size:14px;line-height:1.7;color:var(--ink2)}
+#faq .btns2{margin-top:22px}
+/*/GEO-FAQ*/
