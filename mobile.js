@@ -55,10 +55,10 @@ if(!reduce)setInterval(rnext,5200);
 /* ---------- datas mais baratas ---------- */
 (function(){
 var OFF=MK.OFF,SN=MK.SN,D0=MK.D0,DAY=MK.DAY,N=MK.N,days=MK.days;
-var WD=['dom','seg','ter','qua','qui','sex','sáb'],WDL=['domingo','segunda','terça','quarta','quinta','sexta','sábado'],MO=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'],MOL=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+var WD=I18N.LX('WD',['dom','seg','ter','qua','qui','sex','sáb']),WDL=I18N.LX('WDL',['domingo','segunda','terça','quarta','quinta','sexta','sábado']),MO=I18N.LX('MO',['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']),MOL=I18N.LX('MOL',['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']);
 function U(t){return new Date(t)}
-function money(v){return v.toLocaleString('pt-BR',{maximumFractionDigits:0})}
-function money0(v){return v.toLocaleString('pt-BR',{maximumFractionDigits:0})}
+function money(v){return v.toLocaleString(window.LOC||'pt-BR',{maximumFractionDigits:0})}
+function money0(v){return v.toLocaleString(window.LOC||'pt-BR',{maximumFractionDigits:0})}
 function dm(t){var d=U(t);return d.getUTCDate()+' '+MO[d.getUTCMonth()]}
 function dd2(t){var d=U(t);return ('0'+d.getUTCDate()).slice(-2)+'/'+('0'+(d.getUTCMonth()+1)).slice(-2)}
 function ev(t){var s=new Date(t).toISOString().slice(5,10);
@@ -68,7 +68,7 @@ var first=MK.first();
 var nn=2,mon=-1,sel=-1,su=0;
 var el={n:document.getElementById('dtn'),s:document.getElementById('dts'),best:document.getElementById('dtbest'),m:document.getElementById('dtm'),mon:document.getElementById('dtmon'),ch:document.getElementById('dtchart'),ax:document.getElementById('dtaxis'),sel:document.getElementById('dtsel')};
 if(!el.n)return;
-function wa(txt){return 'https://wa.me/5586999426066?text='+encodeURIComponent(txt)}
+function wa(txt){return 'https://wa.me/5586999426066?text='+encodeURIComponent(I18N.tr(txt))}
 function tier(p){return p<=551?'lo':(p>700?'hi':'')}
 function unk(i){return (su>0&&pkg(i))||days[i].p==null}            /* pacote de réveillon: valor das outras suítes sob consulta */
 function P(i){var b=MK.base(su,i,0);return b===null?0:Math.round(b*MK.DISC)}
@@ -83,9 +83,9 @@ function renderBest(){
   var b=bestWin(nn);
   if(!b){el.best.innerHTML='<div class="dtbadge">Datas</div><div class="dtrange">Consulte as datas disponíveis<small>Fale com a nossa central para ver as próximas datas da Suíte '+SN[su]+'.</small></div><a class="btn" href="'+wa('Olá! Vi o biolink e quero saber as próximas datas com melhor preço na Suíte '+SN[su]+' do Mikiki.')+'" target="_blank" rel="noopener"><svg class="ic"><use href="#wa"/></svg>Falar com a central</a>';return}
   var a=days[b.i],out=a.t+nn*DAY;
-  var txt='Olá! Vi no biolink as datas mais baratas e quero reservar a Suíte '+SN[su]+' de '+dd2(a.t)+' a '+dd2(out)+' ('+nn+' noites) no Mikiki.';
+  var txt='Olá! Vi no biolink as datas mais baratas e quero reservar a Suíte '+SN[su]+I18N.OF+dd2(a.t)+I18N.TO+dd2(out)+' ('+nn+' noites) no Mikiki.';
   el.best.innerHTML='<div class="dtbadge"><i></i>Menor preço · Suíte '+SN[su]+' · '+nn+' noites</div>'
-   +'<div class="dtrange">'+dm(a.t)+' a '+dm(out)+'<small>'+WD[U(a.t).getUTCDay()]+' a '+WD[U(out).getUTCDay()]+' · '+nn+' noites</small></div>'
+   +'<div class="dtrange">'+dm(a.t)+I18N.TO+dm(out)+'<small>'+WD[U(a.t).getUTCDay()]+I18N.TO+WD[U(out).getUTCDay()]+' · '+nn+' noites</small></div>'
    +'<div class="dtprice"><b>R$ '+money(b.s/nn)+'</b><span>por noite · total R$ '+money(b.s)+'</span></div>'
    +'<button type="button" class="btn" data-pick="'+su+','+b.i+','+nn+'"><svg class="ic"><use href="#cal"/></svg>Quero essas datas</button>';
 }
@@ -128,9 +128,9 @@ function renderSel(){
     el.sel.innerHTML='<div class="top"><div class="dd">'+head+'<small>Suíte '+SN[su]+' · pacote de Réveillon</small></div><div class="pp"><b style="font-size:19px;padding-top:4px">sob consulta</b></div></div><div class="tot">Na virada do ano as suítes seguem o pacote do Réveillon. Peça o valor da Suíte '+SN[su]+' pela nossa central.</div>'
      +(past?'':'<a class="btn" href="'+wa('Olá! Quero o valor do pacote de Réveillon na Suíte '+SN[su]+' do Mikiki.')+'" target="_blank" rel="noopener"><svg class="ic"><use href="#wa"/></svg>Pedir valor pelo WhatsApp</a>');return}
   var T=win(sel,n);
-  var txt='Olá! Vi no biolink e quero reservar a Suíte '+SN[su]+' de '+dd2(d.t)+' a '+dd2(out)+' ('+n+' noites) no Mikiki.';
+  var txt='Olá! Vi no biolink e quero reservar a Suíte '+SN[su]+' de '+dd2(d.t)+I18N.TO+dd2(out)+' ('+n+' noites) no Mikiki.';
   el.sel.innerHTML='<div class="top"><div class="dd">'+head+'<small>'+lab+(d.m>1?' · mínimo de '+d.m+' noites':'')+'</small></div><div class="pp"><b>R$ '+money(P(sel))+'</b><small>por noite</small></div></div>'
-   +(T!==null&&!past?'<div class="tot"><b>'+n+' noites</b> · '+dm(d.t)+' a '+dm(out)+' · total <b>R$ '+money(T)+'</b></div>':'<div class="tot">Consulte o valor total com a nossa central.</div>')
+   +(T!==null&&!past?'<div class="tot"><b>'+n+' noites</b> · '+dm(d.t)+I18N.TO+dm(out)+' · total <b>R$ '+money(T)+'</b></div>':'<div class="tot">Consulte o valor total com a nossa central.</div>')
    +(past?'':'<button type="button" class="btn" data-pick="'+su+','+sel+','+n+'"><svg class="ic"><use href="#cal"/></svg>Escolher essas datas</button>');
 }
 function setSel(i){if(i<first&&sel>=0)return;sel=i;markSel();renderSel()}
@@ -168,9 +168,9 @@ var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){retu
 var SN=['Encanto','Refúgio','Mikiki'];
 var V=[[{pp:'2 pessoas',ar:'14,7 m²',bd:'queen',add:0,nm:'duplo'},{pp:'3 pessoas',ar:'18 m²',bd:'queen + solteiro',add:40.5,nm:'triplo'}],[{pp:'2 pessoas',ar:'14,7 m²',bd:'queen',add:0,nm:'duplo'},{pp:'3 pessoas',ar:'18 m²',bd:'queen + solteiro',add:40.5,nm:'triplo'}],[{pp:'2 pessoas',ar:'14,7 m²',bd:'queen',add:0,nm:'duplo'}]];
 var tabs=$$('#tabs button'),panels=$$('.stp'),cur=[0,0,0],reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-function money(v){return v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
-function money0(v){return v.toLocaleString('pt-BR',{maximumFractionDigits:0})}
-function wa(t){return 'https://wa.me/5586999426066?text='+encodeURIComponent(t)}
+function money(v){return v.toLocaleString(window.LOC||'pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function money0(v){return v.toLocaleString(window.LOC||'pt-BR',{maximumFractionDigits:0})}
+function wa(t){return 'https://wa.me/5586999426066?text='+encodeURIComponent(I18N.tr(t))}
 function fillPrice(i){
   var p=panels[i],v=V[i][cur[i]],m=MK.min(i,v.add>0);
   $('.ar',p).textContent=v.ar;$('.pp',p).textContent=v.pp;$('.bd',p).textContent=v.bd;
@@ -259,12 +259,12 @@ $$('.wrap a[href="#datas"]').forEach(function(a){a.addEventListener('click',func
 (function(){
 var d=document,$=function(s,r){return (r||d).querySelector(s)},$$=function(s,r){return [].slice.call((r||d).querySelectorAll(s))};
 var WA='5586999426066',DAY=MK.DAY,SN=MK.SN;
-var WD=['dom','seg','ter','qua','qui','sex','sáb'],WDL=['domingo','segunda','terça','quarta','quinta','sexta','sábado'],MO=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'],MOL=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+var WD=I18N.LX('WD',['dom','seg','ter','qua','qui','sex','sáb']),WDL=I18N.LX('WDL',['domingo','segunda','terça','quarta','quinta','sexta','sábado']),MO=I18N.LX('MO',['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']),MOL=I18N.LX('MOL',['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']);
 var VN=['Suíte Luxo','Suíte Super Luxo','Suíte Premium'];
 var B={s:0,g:2,i:-1,o:-1,arr:'',m:0};      /* reserva em montagem */
 var C={items:[],name:'',obs:''};            /* extras no carrinho */
 var months=[];
-function money0(v){return v.toLocaleString('pt-BR',{maximumFractionDigits:0})}
+function money0(v){return v.toLocaleString(window.LOC||'pt-BR',{maximumFractionDigits:0})}
 function U(t){return new Date(t)}
 function dm(t){var x=U(t);return x.getUTCDate()+' '+MO[x.getUTCMonth()]}
 function dd2(t){var x=U(t);return ('0'+x.getUTCDate()).slice(-2)+'/'+('0'+(x.getUTCMonth()+1)).slice(-2)}
@@ -360,7 +360,7 @@ function renderSum(){
     return;
   }
   var h='<div class="l1"><span>'+suiteLine()+'</span><b style="font-weight:400">'+s.n+(s.n>1?' noites':' noite')+'</b></div>'
-   +'<div class="l1"><span>'+wdd(T(B.i))+' a '+wdd(T(B.o))+'</span><span></span></div>';
+   +'<div class="l1"><span>'+wdd(T(B.i))+I18N.TO+wdd(T(B.o))+'</span><span></span></div>';
   if(s.avg!==null)h+='<div class="l1"><span>R$ '+money0(s.avg)+' por noite'+(s.unk?' (parte da estadia)':'')+'</span><span></span></div>';
   h+='<div class="tt"><span>Hospedagem</span><b>'+(s.avg!==null?'R$ '+money0(s.sum):'sob consulta')+'</b></div>';
   if(s.unk)h+='<div class="pd">'+(s.unk===s.n?'Nessas datas a suíte segue o pacote do Réveillon.':'Em '+s.unk+(s.unk>1?' noites':' noite')+' a suíte segue o pacote do Réveillon.')+' O valor entra como a confirmar na mensagem.</div>';
@@ -435,7 +435,7 @@ function message(){
   if(C.name){L.push('');L.push('Meu nome: '+C.name)}
   if(C.obs){L.push('Obs: '+C.obs)}
   L.push('');L.push('Dá pra confirmar a disponibilidade? Obrigado(a)! 😊');
-  return L.join('\n');
+  return I18N.trMsg(L);
 }
 function waHref(){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(message())}
 
@@ -444,7 +444,7 @@ function renderSheet(){
   if(B.i>=0&&B.o<0)h+='<div class="shwarn">Você escolheu a entrada ('+wdd(T(B.i))+'), mas falta a saída. <button type="button" data-edit>Escolher a saída</button></div>';
   if(s){
     h+='<div class="ci"><div class="cih"><b>'+suiteLine()+'</b><button type="button" data-edit>Editar</button></div>'
-     +'<p>'+B.g+(B.g>1?' hóspedes':' hóspede')+' · '+wdd(T(B.i))+' a '+wdd(T(B.o))+' · '+s.n+(s.n>1?' noites':' noite')+'</p>'
+     +'<p>'+B.g+(B.g>1?' hóspedes':' hóspede')+' · '+wdd(T(B.i))+I18N.TO+wdd(T(B.o))+' · '+s.n+(s.n>1?' noites':' noite')+'</p>'
      +'<p>'+(B.arr?'Chegada: '+B.arr:'Horário de chegada: não informado')+'</p>'
      +'<div class="cip"><span>'+(s.avg!==null?'R$ '+money0(s.avg)+' por noite':'Réveillon: a confirmar')+'</span><b>'+(s.avg!==null?'R$ '+money0(s.sum):'a confirmar')+'</b></div></div>';
   }
@@ -648,7 +648,7 @@ function count(el,delay){
   var dec=(m[2].split(',')[1]||'').length,v=parseFloat(m[2].replace(/\./g,'').replace(',','.'));
   if(!isFinite(v)||v<=0)return;
   el._cd=1;el.style.minWidth=el.offsetWidth+'px';el.style.fontVariantNumeric='tabular-nums';
-  var fmt=function(x){return m[1]+x.toLocaleString('pt-BR',{minimumFractionDigits:dec,maximumFractionDigits:dec})+m[3]};
+  var fmt=function(x){return m[1]+x.toLocaleString(window.LOC||'pt-BR',{minimumFractionDigits:dec,maximumFractionDigits:dec})+m[3]};
   el.textContent=fmt(0);
   setTimeout(function(){
     var t0=performance.now(),dur=1200;

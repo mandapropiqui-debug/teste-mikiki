@@ -13,8 +13,20 @@ Arquivos (todos na mesma pasta, sem subpastas):
   *.jpg *.png  fotos e logos
   poppins-*.woff2  fonte
 
-Preços ao vivo: mk.js lê https://mikiki-hotel.github.io/prices.json.
+Preços ao vivo: mk.js lê https://mikiki.com.br/prices.json.
 Se o prices.json não carregar, valem os preços que já estão dentro do mk.js.
 
 GitHub Pages: suba TODOS estes arquivos na raiz do repositório e ative o Pages.
 Não precisa de build. A página não tem noindex (o Google pode indexar).
+
+------------------------------------------------------------
+IDIOMAS (PT · EN · ES)
+------------------------------------------------------------
+- index.html = português (página principal) | en.html = inglês | es.html = espanhol.
+- Cada página tem o seu idioma completo (título, descrição, texto sem JavaScript, FAQ, JSON-LD).
+- O botão PT · EN · ES fica visível já na abertura (celular) e no topo (desktop). Ele leva para a página do idioma.
+- Primeira visita pela página em português: se o navegador da pessoa estiver em inglês ou espanhol, abre a versão dela. O botão sempre muda (PT usa ?l=pt para não voltar sozinho).
+- i18n.js traduz o que o JavaScript monta na hora (calendário, carrinho, mensagem do WhatsApp). A mensagem do WhatsApp sai no idioma escolhido pela pessoa.
+- Valores continuam em reais (R$); as versões EN e ES avisam isso.
+- Arquivos novos: en.html, es.html, i18n.js, llms-full-en.txt, llms-full-es.txt. sitemap.xml e as tags hreflang ligam as 3 páginas.
+- Para trocar o domínio do site, as URLs absolutas estão em robots.txt, sitemap.xml, llms*.txt, canonical e JSON-LD (hoje https://mikiki.com.br/).

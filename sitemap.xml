@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
  <url>
-  <loc>https://mikiki-hotel.github.io/</loc>
+  <loc>https://mikiki.com.br/</loc>
   <lastmod>2026-11-10</lastmod>
   <changefreq>daily</changefreq>
   <priority>1.0</priority>
-  <image:image><image:loc>https://mikiki-hotel.github.io/h0.jpg</image:loc><image:title>Mikiki Lifestyle Hotel, Barra Grande, Piauí</image:title></image:image>
-  <image:image><image:loc>https://mikiki-hotel.github.io/suite11.jpg</image:loc><image:title>Suíte Mikiki com piscina privativa</image:title></image:image>
+  <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mikiki.com.br/"/>
+  <xhtml:link rel="alternate" hreflang="en" href="https://mikiki.com.br/en.html"/>
+  <xhtml:link rel="alternate" hreflang="es" href="https://mikiki.com.br/es.html"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://mikiki.com.br/"/>
+  <image:image><image:loc>https://mikiki.com.br/h0.jpg</image:loc><image:title>Mikiki Lifestyle Hotel, Barra Grande, Piauí</image:title></image:image>
+ </url>
+ <url>
+  <loc>https://mikiki.com.br/en.html</loc>
+  <lastmod>2026-11-10</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.9</priority>
+  <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mikiki.com.br/"/>
+  <xhtml:link rel="alternate" hreflang="en" href="https://mikiki.com.br/en.html"/>
+  <xhtml:link rel="alternate" hreflang="es" href="https://mikiki.com.br/es.html"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://mikiki.com.br/"/>
+  <image:image><image:loc>https://mikiki.com.br/h0.jpg</image:loc><image:title>Mikiki Lifestyle Hotel, Barra Grande, Piauí</image:title></image:image>
+ </url>
+ <url>
+  <loc>https://mikiki.com.br/es.html</loc>
+  <lastmod>2026-11-10</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.9</priority>
+  <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mikiki.com.br/"/>
+  <xhtml:link rel="alternate" hreflang="en" href="https://mikiki.com.br/en.html"/>
+  <xhtml:link rel="alternate" hreflang="es" href="https://mikiki.com.br/es.html"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://mikiki.com.br/"/>
+  <image:image><image:loc>https://mikiki.com.br/h0.jpg</image:loc><image:title>Mikiki Lifestyle Hotel, Barra Grande, Piauí</image:title></image:image>
  </url>
 </urlset>

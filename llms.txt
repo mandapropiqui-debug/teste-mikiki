@@ -5,21 +5,27 @@
 Endereço: Rua Travessa Eurico Carvalho Silva, 404, Barra Grande, Cajueiro da Praia, Piauí, CEP 64.222-000. E-mail: reservas@mikiki.com.br.
 
 ## Hospedagem
-- [Suítes e valores](https://mikiki-hotel.github.io/#suites): Encanto (Suíte Luxo, térreo), Refúgio (Suíte Super Luxo, varanda privativa) e Mikiki (Suíte Premium, piscina privativa), com fotos, comodidades e diária a partir de.
-- [Calendário de reserva](https://mikiki-hotel.github.io/#reservar): escolha de suíte, datas e horário de chegada, com o valor de cada noite e carrinho que fecha no WhatsApp.
-- [Datas mais em conta](https://mikiki-hotel.github.io/#datas): diária de cada noite e a melhor janela para 2 a 5 noites.
-- [Réveillon 2027](https://mikiki-hotel.github.io/#reveillon): New Year Experience de 30/12 a 04/01.
+- [Suítes e valores](https://mikiki.com.br/#suites): Encanto (Suíte Luxo, térreo), Refúgio (Suíte Super Luxo, varanda privativa) e Mikiki (Suíte Premium, piscina privativa), com fotos, comodidades e diária a partir de.
+- [Calendário de reserva](https://mikiki.com.br/#reservar): escolha de suíte, datas e horário de chegada, com o valor de cada noite e carrinho que fecha no WhatsApp.
+- [Datas mais em conta](https://mikiki.com.br/#datas): diária de cada noite e a melhor janela para 2 a 5 noites.
+- [Réveillon 2027](https://mikiki.com.br/#reveillon): New Year Experience de 30/12 a 04/01.
 
 ## Experiências
-- [Mimos e experiências](https://mikiki-hotel.github.io/#mimos): Romântico Welcome, Aniversário, Honeymoon e Experiência de Cinema.
-- [Day Use](https://mikiki-hotel.github.io/#dayuse): R$ 150 por pessoa, 100% em consumação, das 11h às 17h.
-- [Mikiki Wellness](https://mikiki-hotel.github.io/#wellness): massagem relaxante, reiki, drenagem linfática, massagem esportiva e ventosaterapia.
+- [Mimos e experiências](https://mikiki.com.br/#mimos): Romântico Welcome, Aniversário, Honeymoon e Experiência de Cinema.
+- [Day Use](https://mikiki.com.br/#dayuse): R$ 150 por pessoa, 100% em consumação, das 11h às 17h.
+- [Mikiki Wellness](https://mikiki.com.br/#wellness): massagem relaxante, reiki, drenagem linfática, massagem esportiva e ventosaterapia.
 
 ## Contato e localização
-- [Como chegar](https://mikiki-hotel.github.io/#chegar): voos para Jericoacoara, Fortaleza ou Teresina; voo direto de São Paulo para Jijoca; carro, ônibus ou transfer.
+- [Como chegar](https://mikiki.com.br/#chegar): voos para Jericoacoara, Fortaleza ou Teresina; voo direto de São Paulo para Jijoca; carro, ônibus ou transfer.
 - [Google Maps](https://goo.gl/maps/ivREm6mHMSvs5neB9): localização do hotel.
 - [WhatsApp da central de reservas](https://wa.me/5586999426066): +55 86 99942-6066.
-- [Perguntas frequentes](https://mikiki-hotel.github.io/#faq): 14 respostas sobre localização, suítes, reserva, Réveillon, Day Use e Wellness.
+- [Perguntas frequentes](https://mikiki.com.br/#faq): 14 respostas sobre localização, suítes, reserva, Réveillon, Day Use e Wellness.
+
+## English and Español
+- [English version](https://mikiki.com.br/en.html): suites, rates in BRL, booking on WhatsApp, FAQ in English.
+- [Versión en español](https://mikiki.com.br/es.html): suites, valores en BRL, reserva por WhatsApp, preguntas frecuentes en español.
+- [Full text in English](https://mikiki.com.br/llms-full-en.txt): suites, rates, experiences and FAQ in plain text.
+- [Texto completo en español](https://mikiki.com.br/llms-full-es.txt): suites, valores, experiencias y preguntas frecuentes en texto corrido.
 
 ## Site oficial e redes
 - [Site oficial](https://mikiki.com.br/): página institucional do hotel.
@@ -32,5 +38,5 @@ Endereço: Rua Travessa Eurico Carvalho Silva, 404, Barra Grande, Cajueiro da Pr
 - [Instagram](https://www.instagram.com/mikiki.hotel/): @mikiki.hotel.
 
 ## Optional
-- [Texto completo para IA](https://mikiki-hotel.github.io/llms-full.txt): suítes, valores, experiências e perguntas frequentes em texto corrido.
+- [Texto completo para IA](https://mikiki.com.br/llms-full.txt): suítes, valores, experiências e perguntas frequentes em texto corrido.
 - [Guia de serviços](https://drive.google.com/file/d/1r-Ttuqniynd_vpntPUypNNxy1dWlyyxu/view?usp=sharing): guia de serviços do hotel (PDF no Google Drive).

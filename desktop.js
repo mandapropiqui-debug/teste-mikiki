@@ -2,9 +2,9 @@
 (function(){
 var d=document,$=function(s,r){return (r||d).querySelector(s)},$$=function(s,r){return [].slice.call((r||d).querySelectorAll(s))};
 var DAY=MK.DAY,SN=MK.SN,WA='5586999426066';
-var WD=['dom','seg','ter','qua','qui','sex','sáb'],WDL=['domingo','segunda','terça','quarta','quinta','sexta','sábado'],MO=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'],MOL=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-function money(v){return v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
-function money0(v){return v.toLocaleString('pt-BR',{maximumFractionDigits:0})}
+var WD=I18N.LX('WD',['dom','seg','ter','qua','qui','sex','sáb']),WDL=I18N.LX('WDL',['domingo','segunda','terça','quarta','quinta','sexta','sábado']),MO=I18N.LX('MO',['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']),MOL=I18N.LX('MOL',['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']);
+function money(v){return v.toLocaleString(window.LOC||'pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function money0(v){return v.toLocaleString(window.LOC||'pt-BR',{maximumFractionDigits:0})}
 function U(t){return new Date(t)}
 function dm(t){var x=U(t);return x.getUTCDate()+' '+MO[x.getUTCMonth()]}
 function dd2(t){var x=U(t);return ('0'+x.getUTCDate()).slice(-2)+'/'+('0'+(x.getUTCMonth()+1)).slice(-2)}
@@ -13,7 +13,7 @@ function iso(t){return U(t).toISOString().slice(0,10)}
 function fromIso(s){var a=(s||'').split('-');return a.length===3?Date.UTC(+a[0],+a[1]-1,+a[2]):null}
 function T(i){return MK.D0+i*DAY}
 function go(t,off){window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-(off==null?90:off),behavior:'smooth'})}
-function wa(t){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t)}
+function wa(t){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(I18N.tr(t))}
 var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
 /* ================= SUÍTES ================= */
@@ -110,7 +110,7 @@ var ICB='<svg class="ic"><use href="#bag"/></svg>',ICH='<svg class="ic"><use hre
 function renderSum(){
   var s=stay();
   if(!s){E.sum.innerHTML='<div class="mu">Escolha a entrada e a saída no calendário. O valor da diária aparece em cada dia e o total é calculado aqui.</div>'+(cartCount()?'<button type="button" class="btn" data-open>'+ICB+'Ver carrinho e enviar</button>':'')+'<button type="button" class="btn ghost" data-go="mimos">'+ICH+'Ver mimos e experiências</button>';return}
-  var h='<div class="l1"><span>'+suiteLine()+'</span><b style="font-weight:400">'+s.n+(s.n>1?' noites':' noite')+'</b></div><div class="l1"><span>'+wdd(T(B.i))+' a '+wdd(T(B.o))+'</span><span></span></div>';
+  var h='<div class="l1"><span>'+suiteLine()+'</span><b style="font-weight:400">'+s.n+(s.n>1?' noites':' noite')+'</b></div><div class="l1"><span>'+wdd(T(B.i))+I18N.TO+wdd(T(B.o))+'</span><span></span></div>';
   if(s.avg!==null)h+='<div class="l1"><span>R$ '+money0(s.avg)+' por noite'+(s.unk?' (parte da estadia)':'')+'</span><span></span></div>';
   h+='<div class="tt"><span>Hospedagem</span><b>'+(s.avg!==null?'R$ '+money0(s.sum):'sob consulta')+'</b></div>';
   if(s.unk)h+='<div class="pd">'+(s.unk===s.n?'Nessas datas a suíte segue o pacote do Réveillon.':'Em '+s.unk+(s.unk>1?' noites':' noite')+' a suíte segue o pacote do Réveillon.')+' O valor entra como a confirmar na mensagem.</div>';
@@ -168,13 +168,13 @@ function message(){
   if(C.name){L.push('');L.push('Meu nome: '+C.name)}
   if(C.obs)L.push('Obs: '+C.obs);
   L.push('');L.push('Dá pra confirmar a disponibilidade? Obrigado(a)! 😊');
-  return L.join('\n');
+  return I18N.trMsg(L);
 }
 function waHref(){return wa(message())}
 function renderSheet(){
   var s=stay(),h='',n=cartCount(),t=totals();
   if(B.i>=0&&B.o<0)h+='<div class="shwarn">Você escolheu a entrada ('+wdd(T(B.i))+'), mas falta a saída. <button type="button" data-edit>Escolher a saída</button></div>';
-  if(s)h+='<div class="ci"><div class="cih"><b>'+suiteLine()+'</b><button type="button" data-edit>Editar</button></div><p>'+B.g+(B.g>1?' hóspedes':' hóspede')+' · '+wdd(T(B.i))+' a '+wdd(T(B.o))+' · '+s.n+(s.n>1?' noites':' noite')+'</p><p>'+(B.arr?'Chegada: '+B.arr:'Horário de chegada: não informado')+'</p><div class="cip"><span>'+(s.avg!==null?'R$ '+money0(s.avg)+' por noite':'Réveillon: a confirmar')+'</span><b>'+(s.avg!==null?'R$ '+money0(s.sum):'a confirmar')+'</b></div></div>';
+  if(s)h+='<div class="ci"><div class="cih"><b>'+suiteLine()+'</b><button type="button" data-edit>Editar</button></div><p>'+B.g+(B.g>1?' hóspedes':' hóspede')+' · '+wdd(T(B.i))+I18N.TO+wdd(T(B.o))+' · '+s.n+(s.n>1?' noites':' noite')+'</p><p>'+(B.arr?'Chegada: '+B.arr:'Horário de chegada: não informado')+'</p><div class="cip"><span>'+(s.avg!==null?'R$ '+money0(s.avg)+' por noite':'Réveillon: a confirmar')+'</span><b>'+(s.avg!==null?'R$ '+money0(s.sum):'a confirmar')+'</b></div></div>';
   C.items.forEach(function(it,k){
     var sub=it.price!=null?'R$ '+money0(it.price*it.q):'a confirmar';
     h+='<div class="ci"><div class="cih"><b>'+it.name+'</b><button type="button" class="rm" data-rm="'+k+'" aria-label="Remover"><svg class="ic"><use href="#x"/></svg></button></div>';
@@ -249,7 +249,7 @@ function renderBest(){
   var b=bestWin(nn);
   if(!b){el.best.innerHTML='<div class="dtrange">Consulte as datas disponíveis<small>Fale com a nossa central para ver as próximas datas da Suíte '+SN[su]+'.</small></div><a class="btn" href="'+wa('Olá! Quero saber as próximas datas com melhor preço na Suíte '+SN[su]+' do Mikiki.')+'" target="_blank" rel="noopener">'+WAI+'Falar com a central</a>';return}
   var a=days()[b.i],out=a.t+nn*DAY;
-  el.best.innerHTML='<div class="dtbadge"><i></i>Menor preço · Suíte '+SN[su]+' · '+nn+' noites</div><div class="dtrange">'+dm(a.t)+' a '+dm(out)+'<small>'+WD[U(a.t).getUTCDay()]+' a '+WD[U(out).getUTCDay()]+' · '+nn+' noites</small></div><div class="dtprice"><b>R$ '+money(b.s/nn)+'</b><span>por noite · total R$ '+money(b.s)+'</span></div><button type="button" class="btn" data-pick="'+su+','+b.i+','+nn+'">'+CALI+'Quero essas datas</button>';
+  el.best.innerHTML='<div class="dtbadge"><i></i>Menor preço · Suíte '+SN[su]+' · '+nn+' noites</div><div class="dtrange">'+dm(a.t)+I18N.TO+dm(out)+'<small>'+WD[U(a.t).getUTCDay()]+I18N.TO+WD[U(out).getUTCDay()]+' · '+nn+' noites</small></div><div class="dtprice"><b>R$ '+money(b.s/nn)+'</b><span>por noite · total R$ '+money(b.s)+'</span></div><button type="button" class="btn" data-pick="'+su+','+b.i+','+nn+'">'+CALI+'Quero essas datas</button>';
 }
 function renderMonths(){
   el.m.innerHTML='';
@@ -282,7 +282,7 @@ function renderSel(){
   if(unk(sel)){el.sel.innerHTML='<div class="top"><div class="dd">'+head+'<small>Suíte '+SN[su]+' · pacote de Réveillon</small></div><div class="pp"><b style="font-size:19px;padding-top:4px">sob consulta</b></div></div><div class="tot">Na virada do ano as suítes seguem o pacote do Réveillon. Peça o valor da Suíte '+SN[su]+' pela nossa central.</div>'+(past?'':'<a class="btn" href="'+wa('Olá! Quero o valor do pacote de Réveillon na Suíte '+SN[su]+' do Mikiki.')+'" target="_blank" rel="noopener">'+WAI+'Pedir valor pelo WhatsApp</a>');return}
   var Tt=win(sel,n);
   el.sel.innerHTML='<div class="top"><div class="dd">'+head+'<small>'+lab+(x.m>1?' · mínimo de '+x.m+' noites':'')+'</small></div><div class="pp"><b>R$ '+money(P(sel))+'</b><small>por noite</small></div></div>'
-   +(Tt!==null&&!past?'<div class="tot"><b>'+n+' noites</b> · '+dm(x.t)+' a '+dm(out)+' · total <b>R$ '+money(Tt)+'</b></div>':'<div class="tot">Consulte o valor total com a nossa central.</div>')
+   +(Tt!==null&&!past?'<div class="tot"><b>'+n+' noites</b> · '+dm(x.t)+I18N.TO+dm(out)+' · total <b>R$ '+money(Tt)+'</b></div>':'<div class="tot">Consulte o valor total com a nossa central.</div>')
    +(past?'':'<button type="button" class="btn" data-pick="'+su+','+sel+','+n+'">'+CALI+'Escolher essas datas</button>');
 }
 function setSel(i){if(i<first&&sel>=0)return;sel=i;markSel();renderSel()}

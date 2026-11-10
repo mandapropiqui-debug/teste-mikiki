@@ -536,3 +536,11 @@ body.sheetopen .float,body.sheetopen .mascot{visibility:hidden}
 .faq details p{margin:0;padding:0 0 18px;font-size:14px;line-height:1.7;color:var(--ink2)}
 #faq .btns2{margin-top:22px}
 /*/GEO-FAQ*/
+
+/*GEO-LANG*/
+.lang{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:300;display:flex;align-items:center;gap:2px;padding:3px 4px 3px 9px;border-radius:99px;background:rgba(252,239,229,.94);border:1px solid rgba(255,255,255,.7);box-shadow:0 8px 22px rgba(35,42,99,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:top .7s cubic-bezier(.2,.9,.3,1)}
+.lang .gl{width:16px;height:16px;fill:none;stroke:var(--purple);stroke-width:1.6;stroke-linecap:round;margin-right:3px}
+.lang a{min-width:36px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:99px;font:500 12px/1 'Poppins',sans-serif;letter-spacing:.06em;color:var(--navy);transition:background .3s,color .3s}
+.lang a[aria-current]{background:var(--navy);color:#fff}
+.nav.show ~ .lang{top:calc(74px + env(safe-area-inset-top))}
+/*/GEO-LANG*/
