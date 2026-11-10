@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mikiki Lifestyle Hotel</title>
+<script>
+(function () {
+  var mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ||
+               window.matchMedia('(max-width: 820px)').matches;
+  location.replace(mobile ? 'mobile/' : 'desktop/');
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0;url=desktop/"></noscript>
+</head>
+<body><a href="desktop/">Desktop</a> · <a href="mobile/">Mobile</a></body>
+</html>
